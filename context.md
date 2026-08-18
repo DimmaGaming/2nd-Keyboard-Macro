@@ -49,3 +49,4 @@ The system provides a highly efficient, automated pipeline:
 **Physical Key Press (2nd Keyboard)  ->  LuaMacros intercepts and sends complex F-Key Combination  ->  AutoHotkey Main Hub catches the combo  ->  Specific Module Script executes the action  ->  Result achieved in Premiere Pro (or OS).**
 
 This decouples the physical hardware from the software actions, allowing for an incredibly flexible, powerful, and fast video editing workflow.
+sex
