@@ -70,17 +70,27 @@ lmc_set_handler('MACRO_BOARD', function(button, direction)
   elseif (button == 35) then
     lmc_send_keys('^+%{F18}')
 
-  -- ========================================================
-  -- CATEGORY 2: PROJECT PANEL NEST DROPPERS
-  -- ========================================================
-  elseif (button == 49) then
-    lmc_send_keys('^+{F13}')
 
-  elseif (button == 50) then
-    lmc_send_keys('^+{F14}')
 
-  elseif (button == 76) then
-    lmc_send_keys('^+{F15}')
+  -- ========================================================
+  -- CATEGORY 3: WORKSPACE AUTOMATION
+  -- ========================================================
+
+  -- Backtick Key (192) -> Enter/Exit Editing Mode (Ctrl+Shift+Alt+F23)
+  -- AHK checks physical Ctrl state: no Ctrl = Enter, Ctrl held = Exit
+  elseif (button == 192) then
+    lmc_send_keys('^+%{F23}')
+
+  -- ========================================================
+  -- CATEGORY 4: AUDIO MACROS
+  -- ========================================================
+  -- Insert Key (45) -> Add Gain +6dB (Ctrl+Alt+F13)
+  elseif (button == 45) then
+    lmc_send_keys('^%{F13}')
+
+  -- Delete Key (46) -> Add Gain -6dB (Ctrl+Alt+F14)
+  elseif (button == 46) then
+    lmc_send_keys('^%{F14}')
 
   end
 end)

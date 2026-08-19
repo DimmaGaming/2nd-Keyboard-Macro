@@ -1,82 +1,141 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 SetWinDelay(0)
+SendMode("Event")       ; Event mode handles physically-held modifiers (LWin) reliably
 A_MenuMaskKey := "vkE8" ; Extra layer of Start Menu suppression
 
 ; ==========================================
-; CONFIGURATION & CALIBRATION 
+; CONFIGURATION & CALIBRATION
 ; ==========================================
-Global ProjectResultX := 300 
-Global ProjectResultY := 500  
 
-Global ShortcutProjectPanel := "+1"    
-Global ShortcutFindBox := "^f"         
+; --- Project Panel: First search result position (screen coords) ---
+Global SearchResultX := -1900
+Global SearchResultY := -1422
 
-Global Drag_Speed := 2
+; --- "Insert and overwrite sequences as nests" button (screen coords) ---
+; When OFF the pixel is ~#1D1D1D, when ON it's ~#4A4A4A
+Global NestToggleX := 55
+Global NestToggleY := 261
+Global NestToggleOffColor := 0x1D1D1D  ; Color when the option is DISABLED (what we want)
+Global NestToggleColorTolerance := 25   ; Tolerance for PixelGetColor comparison
+
+; --- List View icon in Project Panel (screen coords) ---
+Global ListViewIconX := -2050
+Global ListViewIconY := -1000
+
+; --- Search box clear (X) button position (screen coords) ---
+Global SearchClearX := -1796
+Global SearchClearY := -1562
+
+; --- Premiere shortcuts ---
+Global ShortcutProjectPanel := "+6"     ; Shift+6
+Global ShortcutFindBox := "+f"          ; Shift+F
+Global ShortcutTimeline := "+8"         ; Shift+8
+
+; --- Drag speed (0 = instant, higher = slower) ---
+Global Drag_Speed := 1
 
 ; ==========================================
-; CORE FUNCTION: HYPER-OPTIMIZED DRAG & DROP
+; HELPER: Check if a color is "close enough"
+; ==========================================
+ColorsAreClose(color1, color2, tolerance) {
+    r1 := (color1 >> 16) & 0xFF
+    g1 := (color1 >> 8) & 0xFF
+    b1 := color1 & 0xFF
+    r2 := (color2 >> 16) & 0xFF
+    g2 := (color2 >> 8) & 0xFF
+    b2 := color2 & 0xFF
+    return (Abs(r1 - r2) <= tolerance) && (Abs(g1 - g2) <= tolerance) && (Abs(b1 - b2) <= tolerance)
+}
+
+; ==========================================
+; CORE FUNCTION: SEARCH, DRAG & DROP
 ; ==========================================
 NativeApplyNest(nestName) {
     CoordMode("Mouse", "Screen")
+    CoordMode("Pixel", "Screen")
     MouseGetPos(&origX, &origY)
 
-    ; 1. Clean release of normal modifiers
-    Send("{Ctrl up}{Shift up}{Alt up}") 
+    ; 1. Clean release of modifiers
+    Send("{Ctrl up}{Shift up}{Alt up}{LWin up}{RWin up}")
 
-    ; 2. Instantly focus Project Panel & clear search
-    Send(ShortcutProjectPanel)
-    Sleep(40)
-    Send(ShortcutFindBox)
-    Sleep(40)
-    
-    ; Combining Ctrl+A and Backspace for faster execution
-    Send("^a{Backspace}")
-    Sleep(20)
+    ; 2. Make sure "Insert and overwrite sequences as nests" is OFF
+    pixelColor := PixelGetColor(NestToggleX, NestToggleY)
+    if !ColorsAreClose(pixelColor, NestToggleOffColor, NestToggleColorTolerance) {
+        MouseMove(NestToggleX, NestToggleY, 0)
+        Click()
+        Sleep(20)
+    }
 
-    ; 3. Type nest name
-    SendText(nestName)
-    
-    ; 🚨 CRITICAL WAIT: Premiere takes ~100ms to filter the project bin. 
-    ; If we go faster than 120ms, it will drag the wrong file. This guarantees 0 glitches.
-    Sleep(120) 
-
-    ; 4. Glide to the result and drag
-    MouseMove(ProjectResultX, ProjectResultY, 0)
-    Sleep(20)
-    MouseClickDrag("Left", ProjectResultX, ProjectResultY, origX, origY, Drag_Speed)
-    Sleep(30) ; Gives Premiere the frame it needs to drop the clip
-
-    ; 5. Instantly clean the search box so the panel is ready for manual use
+    ; 3. Focus Project Panel
     Send(ShortcutProjectPanel)
     Sleep(30)
-    Send(ShortcutFindBox)
-    Sleep(30)
-    Send("^a{Backspace}")
+
+    ; 4. Ensure List View is active
+    MouseMove(ListViewIconX, ListViewIconY, 0)
+    Click()
     Sleep(20)
 
-    ; 6. Return mouse instantly
+    ; 5. Focus Find Box
+    Send(ShortcutFindBox)
+    Sleep(30)
+
+    ; 6. Paste nest name instantly via clipboard
+    A_Clipboard := ""
+    A_Clipboard := nestName
+    ClipWait(1)          ; Wait until clipboard actually has data (up to 1s)
+    Send("^v")
+    Sleep(20)
+    A_Clipboard := ""    ; Nuke clipboard immediately after paste
+
+    ; 7. Wait for Premiere to filter the bin
+    Sleep(220)
+
+    ; 8. Snap to first result and drag to original cursor
+    MouseMove(SearchResultX, SearchResultY, 0)
+    Sleep(20)
+    MouseClickDrag("Left", SearchResultX, SearchResultY, origX, origY, Drag_Speed)
+    Sleep(50)
+
+    ; 9. Click the X button next to the search box — no keyboard, no corruption
+    MouseMove(SearchClearX, SearchClearY, 0)
+    Click()
+    Sleep(20)
+
+    ; 10. Focus Timeline
+    Send(ShortcutTimeline)
+    Sleep(20)
+
+    ; 11. Return mouse to original position
     MouseMove(origX, origY, 0)
 }
 
 ; ========================================================
-; THE ZERO-GLITCH WINDOWS KEY BYPASS
+; WINDOWS KEY BYPASS (blocks Win key while Premiere is active)
 ; ========================================================
 #HotIf WinActive("ahk_exe Adobe Premiere Pro.exe")
 
-; 1. Nuke the Windows Key. The OS will never see you press it. No Start Menu, ever.
-*LWin::Return
-*RWin::Return
+*LWin:: Return
+*RWin:: Return
 
 #HotIf
 
-; 2. Create a custom layer that ONLY activates when the physical hardware switch is held
+; ========================================================
+; HOTKEY LAYER: LWin + Key (Premiere must be active)
+; ========================================================
 #HotIf WinActive("ahk_exe Adobe Premiere Pro.exe") and GetKeyState("LWin", "P")
 
-*q::NativeApplyNest("01_MAIN_TEXT_NEST")
-*w::NativeApplyNest("02_ADJUSTMENT_LAYER_NEST")
-*e::NativeApplyNest("03_SOME_OTHER_NEST")
-*a::NativeApplyNest("04_SOME_OTHER_NEST")
-*s::NativeApplyNest("05_SOME_OTHER_NEST")
-*d::NativeApplyNest("06_SOME_OTHER_NEST")
+*b:: NativeApplyNest("Broll Image Preset Nest")
+*c:: NativeApplyNest("Center Bold Text Preset Nest")
+*r:: NativeApplyNest("Center Round TextBox Preset Nest")
+*t:: NativeApplyNest("Center Typewriter Text Preset Nest")
+
+#HotIf
+
+; ========================================================
+; HOTKEY LAYER: LWin + Shift + Key (for shifted combos)
+; ========================================================
+#HotIf WinActive("ahk_exe Adobe Premiere Pro.exe") and GetKeyState("LWin", "P") and GetKeyState("Shift", "P")
+
+*f:: NativeApplyNest("FilmBurn Transition Preset Nest")
 
 #HotIf
