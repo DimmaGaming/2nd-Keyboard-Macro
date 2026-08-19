@@ -19,7 +19,7 @@ This project uses a combination of LuaMacros and AutoHotkey (AHK v2) to create a
 - **Structure:** Instead of running multiple independent AHK scripts, it uses `#Include` to load all other specialized scripts into a single running instance. This keeps the system tray clean and manages all hotkeys centrally to avoid conflicts.
 - **Included Files:**
   - `Premiere Scripts\Clipboard Paste Into Timeline.ahk`
-  - `Black Arrow Keys Application Switch & Slide Effects.ahk`
+  - `Premiere Scripts\Black Arrow Keys Application Switch & Slide Effects.ahk`
   - `Premiere Scripts\All Effects Apply Script.ahk`
   - `Premiere Scripts\All Premiere Functions Added.ahk`
   - `Premiere Scripts\All Nest Presets Premiere script.ahk`

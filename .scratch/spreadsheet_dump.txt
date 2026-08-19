@@ -1,0 +1,105 @@
+=== Sheet: Macro Keyboard Registry ===
+F-Key | Modifiers | LuaMacros Syntax | AutoHotkey Syntax | Status | Assigned Action | 2nd Keyboard Physical Key | 2nd Key Code | Main Keyboard Shortcut |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F13 | Ctrl+Shift+Alt | ^+%{F13} | ^+!F13 | USED | Normal: Premiere Pro
++CapsLock: Slide Left In
++Caps+Shift: Slide Left Out | Left Arrow | 37 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F14 | Ctrl+Shift+Alt | ^+%{F14} | ^+!F14 | USED | Normal: OneCommander
++CapsLock: Slide Up In
++Caps+Shift: Slide Up Out | Up Arrow | 38 |  |  | LUA |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F15 | Ctrl+Shift+Alt | ^+%{F15} | ^+!F15 | USED | Normal: Brave Cycler
++CapsLock: Slide Right In
++Caps+Shift: Slide Right Out | Right Arrow | 39 |  |  | if (button == 37) then
+lmc_send_keys('^+%{F13}') |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F16 | Ctrl+Shift+Alt | ^+%{F16} | ^+!F16 | USED | Normal: ChatGPT (Zen)
++CapsLock: Slide Down In
++Caps+Shift: Slide Down Out | Down Arrow | 40 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F17 | Ctrl+Shift+Alt | ^+%{F17} | ^+!F17 | USED | Paste Clipboard Image Into Pr | Page Down | 34 |  |  | lmc_device_set_name('MACRO_BOARD', '2B6D316') |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F18 | Ctrl+Shift+Alt | ^+%{F18} | ^+!F18 | USED | auto copy in brave | End | 35 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F19 | Ctrl+Shift+Alt | ^+%{F19} | ^+!F19 | AVAILABLE | SCALE | Pause | 19 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F20 | Ctrl+Shift+Alt | ^+%{F20} | ^+!F20 | AVAILABLE | X | Scroll lock | 145
+ |  |  | AHK |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F21 | Ctrl+Shift+Alt | ^+%{F21} | ^+!F21 | AVAILABLE | Y | Home | 36 |  |  | ^+!F13::
+    ; Your application launching code goes here
+return |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F22 | Ctrl+Shift+Alt | ^+%{F22} | ^+!F22 | AVAILABLE | Rotation | Page Up | 33 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F23 | Ctrl+Shift+Alt | ^+%{F23} | ^+!F23 | AVAILABLE |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F24 | Ctrl+Shift+Alt | ^+%{F24} | ^+!F24 | AVAILABLE | Universal drop, for the 4 above 
+(It uses all the 4 above keys, and only activates when key if going up. not being pressed down) | "Pause
+Scroll Lock
+Home
+Page up" | "19
+145
+36
+33" |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F13 | Ctrl+Shift | ^+{F13} | ^+F13 | AVAILABLE |  |  |  |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F14 | Ctrl+Shift | ^+{F14} | ^+F14 | AVAILABLE |  |  |  |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F15 | Ctrl+Shift | ^+{F15} | ^+F15 | AVAILABLE |  |  |  |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F16 | Ctrl+Shift | ^+{F16} | ^+F16 | AVAILABLE |  | 6 | 54 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F17 | Ctrl+Shift | ^+{F17} | ^+F17 | AVAILABLE |  | 7 | 55 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F18 | Ctrl+Shift | ^+{F18} | ^+F18 | AVAILABLE |  | 8 | 56 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F19 | Ctrl+Shift | ^+{F19} | ^+F19 | AVAILABLE |  | 9 | 57 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F20 | Ctrl+Shift | ^+{F20} | ^+F20 | AVAILABLE |  | 0 | 48 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F21 | Ctrl+Shift | ^+{F21} | ^+F21 | AVAILABLE |  | - | 189 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F22 | Ctrl+Shift | ^+{F22} | ^+F22 | AVAILABLE |  | = | 187 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F23 | Ctrl+Shift | ^+{F23} | ^+F23 | AVAILABLE |  | Backspace | 8 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F24 | Ctrl+Shift | ^+{F24} | ^+F24 | AVAILABLE |  | Q | 81 |  |  | Saving these for the nest presets ahk scirpt |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F13 | Ctrl+Alt | ^%{F13} | ^!F13 | AVAILABLE |  | W | 87 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F14 | Ctrl+Alt | ^%{F14} | ^!F14 | AVAILABLE |  | e | 69 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F15 | Ctrl+Alt | ^%{F15} | ^!F15 | AVAILABLE |  | E | 69 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F16 | Ctrl+Alt | ^%{F16} | ^!F16 | AVAILABLE |  | R | 82 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F17 | Ctrl+Alt | ^%{F17} | ^!F17 | AVAILABLE |  | T | 84 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F18 | Ctrl+Alt | ^%{F18} | ^!F18 | AVAILABLE |  | Y | 89 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F19 | Ctrl+Alt | ^%{F19} | ^!F19 | AVAILABLE |  | U | 85 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F20 | Ctrl+Alt | ^%{F20} | ^!F20 | AVAILABLE |  | I | 73 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F21 | Ctrl+Alt | ^%{F21} | ^!F21 | AVAILABLE |  | o | 79 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F22 | Ctrl+Alt | ^%{F22} | ^!F22 | AVAILABLE |  | O | 79 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F23 | Ctrl+Alt | ^%{F23} | ^!F23 | AVAILABLE |  | p | 80 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F24 | Ctrl+Alt | ^%{F24} | ^!F24 | AVAILABLE |  | P | 80 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F13 | Shift+Alt | +%{F13} | +!F13 | AVAILABLE |  | a | 65 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F14 | Shift+Alt | +%{F14} | +!F14 | AVAILABLE |  | S | 83 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F15 | Shift+Alt | +%{F15} | +!F15 | AVAILABLE |  | d | 68 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F16 | Shift+Alt | +%{F16} | +!F16 | AVAILABLE |  | D | 68 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F17 | Shift+Alt | +%{F17} | +!F17 | AVAILABLE |  | f | 70 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F18 | Shift+Alt | +%{F18} | +!F18 | AVAILABLE |  | F | 70 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F19 | Shift+Alt | +%{F19} | +!F19 | AVAILABLE |  | g | 71 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F20 | Shift+Alt | +%{F20} | +!F20 | AVAILABLE |  | H | 72 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F21 | Shift+Alt | +%{F21} | +!F21 | AVAILABLE |  | J | 74 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F22 | Shift+Alt | +%{F22} | +!F22 | AVAILABLE |  | K | 75 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F23 | Shift+Alt | +%{F23} | +!F23 | AVAILABLE |  | l | 76 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F24 | Shift+Alt | +%{F24} | +!F24 | AVAILABLE |  | Z | 90 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F13 | Ctrl | ^{F13} | ^F13 | AVAILABLE |  | X | 88 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F14 | Ctrl | ^{F14} | ^F14 | AVAILABLE |  | c | 67 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F15 | Ctrl | ^{F15} | ^F15 | AVAILABLE |  | V | 86 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F16 | Ctrl | ^{F16} | ^F16 | AVAILABLE |  | b | 66 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F17 | Ctrl | ^{F17} | ^F17 | AVAILABLE |  | B | 66 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F18 | Ctrl | ^{F18} | ^F18 | AVAILABLE |  | n | 78 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F19 | Ctrl | ^{F19} | ^F19 | AVAILABLE |  | N | 78 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F20 | Ctrl | ^{F20} | ^F20 | AVAILABLE |  | m | 77 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F21 | Ctrl | ^{F21} | ^F21 | AVAILABLE |  | M | 77 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F22 | Ctrl | ^{F22} | ^F22 | AVAILABLE |  | [ | 219 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F23 | Ctrl | ^{F23} | ^F23 | AVAILABLE |  | ] | 221 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F24 | Ctrl | ^{F24} | ^F24 | AVAILABLE |  | \ | 220 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F13 | Shift | +{F13} | +F13 | AVAILABLE |  | ; | 186 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F14 | Shift | +{F14} | +F14 | AVAILABLE |  | ' | 222 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F15 | Shift | +{F15} | +F15 | AVAILABLE |  | Enter | 13 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F16 | Shift | +{F16} | +F16 | AVAILABLE |  | , | 188 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F17 | Shift | +{F17} | +F17 | AVAILABLE |  | . | 190 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F18 | Shift | +{F18} | +F18 | AVAILABLE |  | / | 191 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F19 | Shift | +{F19} | +F19 | AVAILABLE |  | ` | 192 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F20 | Shift | +{F20} | +F20 | AVAILABLE |  | Esc | 27 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F21 | Shift | +{F21} | +F21 | AVAILABLE |  | Caps Lock | 20 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F22 | Shift | +{F22} | +F22 | AVAILABLE |  | Left Shift | 160 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F23 | Shift | +{F23} | +F23 | AVAILABLE |  | Right Shift | 161 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F24 | Shift | +{F24} | +F24 | AVAILABLE |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F13 | Alt | %{F13} | !F13 | AVAILABLE |  | F1 | 112 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F14 | Alt | %{F14} | !F14 | AVAILABLE |  | F2 | 113 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F15 | Alt | %{F15} | !F15 | AVAILABLE |  | F3 | 114 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F16 | Alt | %{F16} | !F16 | AVAILABLE |  | F4 | 115 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F17 | Alt | %{F17} | !F17 | AVAILABLE |  | F5 | 116 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F18 | Alt | %{F18} | !F18 | AVAILABLE |  | F6 | 117 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F19 | Alt | %{F19} | !F19 | AVAILABLE |  | F7 | 118 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F20 | Alt | %{F20} | !F20 | AVAILABLE |  | F8 | 119 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F21 | Alt | %{F21} | !F21 | AVAILABLE |  | F9 | 120 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F22 | Alt | %{F22} | !F22 | AVAILABLE |  | F10 | 121 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F23 | Alt | %{F23} | !F23 | AVAILABLE |  | F11 | 122 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+F24 | Alt | %{F24} | !F24 | AVAILABLE |  | F12 | 123 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 

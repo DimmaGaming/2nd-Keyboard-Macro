@@ -1,0 +1,16 @@
+{
+  "ahk-auto-reload": {
+    "PostToolUse": [
+      {
+        "matcher": "write_to_file|replace_file_content|multi_replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python reload_ahk.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
